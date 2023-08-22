@@ -11,15 +11,10 @@ provider "aws" {
   region = "us-east-2"
 }
 
-resource "aws_s3_bucket" "bucket2" {
-  bucket = "my-tf-samplebucket3427"
-  versioning {
-        enabled = "true"
-  }
-  tags = {
-    Name        = "haribucket123"
-    Environment = "Dev"
-  }
+resource "aws_instance" "instance1" {
+   count = 3
+    ami = "ami-098dd3a86ea110896"
+    instance_type = "t2.micro"
 }
 
   
