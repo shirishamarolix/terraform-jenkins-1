@@ -21,14 +21,46 @@ resource "aws_s3_bucket" "bucket2" {
     Environment = "Dev"
   }
 }
-resource "aws_vpc" "main" {
-    cidr_block = "10.0.0.0/16"
-    instance_tenancy = "default"
-    enable_dns_support = true
-    enable_dns_hostnames = true
+resource "aws_elb" "bar" {
+  name               = "foobar-terraform-elb"
+  availability_zones = ["us-east-2a", "us-east-2b", "us-east-2c"]
+
+  access_logs {
+    bucket        = "foo"
+    bucket_prefix = "bar"
+    interval      = 60
+  }
+
+  listener {
+    instance_port     = 8000
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
+  }
+
+  listener {
+    instance_port      = 8000
+    instance_protocol  = "http"
+    lb_port            = 443
+    lb_protocol        = "https"
+  }
+
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    target              = "HTTP:8000/"
+    interval            = 30
+  }
+
+  instances                   = [aws_instance.foo.id]
+  cross_zone_load_balancing   = true
+  idle_timeout                = 400
+  connection_draining         = true
+  connection_draining_timeout = 400
+
   tags = {
-    Name = "harivpc"
-    Terraform = "true"
-    Environment = "DEV"
+    Name = "foobar-terraform-elb"
   }
 }
+
