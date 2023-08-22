@@ -12,20 +12,23 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket2" {
-  bucket = "my-tf-samplebucket342345"
+  bucket = "my-tf-samplebucket3427"
   versioning {
         enabled = "true"
   }
   tags = {
-    Name        = "haribucket123467"
+    Name        = "haribucket123"
     Environment = "Dev"
   }
 }
-resource "aws_ebs_volume" "volume1" {
-  availability_zone = "us-east-2a"
-  size              = 10
-
+resource "aws_vpc" "main" {
+    cidr_block = "10.0.0.0/16"
+    instance_tenancy = "default"
+    enable_dns_support = true
+    enable_dns_hostnames = true
   tags = {
-    Name = "Ebs-Volume"
+    Name = "harivpc"
+    Terraform = "true"
+    Environment = "DEV"
   }
 }
