@@ -11,14 +11,14 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_vpc" "main" {
-    cidr_block = "10.0.0.0/16"
-    instance_tenancy = "default"
-    enable_dns_support = true
-    enable_dns_hostnames = true
+resource "aws_s3_bucket" "bucket2" {
+  bucket = "my-tf-sample1232277"
+  versioning {
+        enabled = "true"
+  }
   tags = {
-    Name = "siri01"
-    Terraform = "true"
-    Environment = "DEV"
+    Name        = "siribuck227713"
+    Environment = "Dev"
   }
 }
+
