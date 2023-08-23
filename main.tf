@@ -11,7 +11,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_s3_bucket" "bucket2" {
+resource "aws_s3_bucket" "bucket2213" {
   bucket = "my-tf-sample1232277"
   versioning {
         enabled = "true"
