@@ -11,7 +11,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_ebs_volume" "example" {
+resource "aws_ebs_volume" "example2213" {
   availability_zone = "ap-south-1"
   size              = 10
 
