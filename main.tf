@@ -16,7 +16,7 @@ resource "aws_ebs_volume" "example2213" {
   size              = 10
 
   tags = {
-    Name = "HelloWorld"
+    Name = "Hellokurnool"
   }
 }
 
