@@ -13,7 +13,7 @@ provider "aws" {
 
 resource "aws_ebs_volume" "example2213" {
   availability_zone = "ap-south-1"
-  size              = 10
+  size              = 8
 
   tags = {
     Name = "Hellokurnool"
