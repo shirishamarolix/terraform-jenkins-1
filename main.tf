@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_ebs_volume" "siriram2213" {
-  availability_zone = 'ap-south-1'
+  availability_zone = "ap-south-1"
   size              = 10
 
   tags = {
