@@ -11,12 +11,14 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_ebs_volume" "siriram2213" {
-  availability_zone = "ap-south-1"
-  size              = 10
-
+resource "aws_vpc" "main" {
+    cidr_block = "10.0.0.0/16"
+    instance_tenancy = "default"
+    enable_dns_support = true
+    enable_dns_hostnames = true
   tags = {
-    Name = "Hellokurnool"
+    Name = "sirivpc"
+    Terraform = "true"
+    Environment = "DEV"
   }
 }
-
